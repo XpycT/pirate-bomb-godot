@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cble1xne8ulll"]
+[gd_scene load_steps=63 format=3 uid="uid://cble1xne8ulll"]
 
 [ext_resource type="Texture2D" uid="uid://dk2vuv8siujsv" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/1-Idle (sprite sheet 58x58).png" id="1_g53fy"]
 [ext_resource type="Script" path="res://src/scripts/player/player.gd" id="1_p3qtb"]
@@ -13,14 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://blam4305kp5pa" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/6-Ground (sprite sheet 58x58).png" id="6_76o0p"]
 [ext_resource type="Texture2D" uid="uid://fweflj41uloq" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit (sprite sheet 58x58).png" id="7_2c4yg"]
 [ext_resource type="Script" path="res://src/scripts/player/states/landing_state.gd" id="7_vksqi"]
+[ext_resource type="Script" path="res://src/scripts/player/states/attack_state.gd" id="8_ewu37"]
 [ext_resource type="Texture2D" uid="uid://cw2s48x6ucoy3" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/8-Dead Hit (sprite sheet 58x58).png" id="8_gsp85"]
-[ext_resource type="Script" path="res://src/scripts/player/states/sttack_state.gd" id="8_io0rp"]
 [ext_resource type="Texture2D" uid="uid://bh5yea1ekyx22" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/9-Dead Ground (sprite sheet 58x58).png" id="9_7rt2p"]
+[ext_resource type="PackedScene" uid="uid://cbteqrp26qyio" path="res://src/scenes/bomb.tscn" id="9_iog60"]
 [ext_resource type="Script" path="res://src/scripts/player/states/hit_state.gd" id="9_o4x7i"]
 [ext_resource type="Texture2D" uid="uid://bmsg3bf8f52f0" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/10-Door In (sprite sheet 58x58).png" id="10_nmate"]
 [ext_resource type="Texture2D" uid="uid://i7gu17ixtk2y" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/11-Door Out (sprite sheet 58x58).png" id="11_reyu0"]
 [ext_resource type="Script" path="res://src/scripts/StateDebugLabel.gd" id="18_scu6r"]
 [ext_resource type="Script" path="res://src/scripts/damageable.gd" id="20_amdcw"]
+[ext_resource type="Texture2D" uid="uid://burt0qg1bqvc7" path="res://assets/Pirate Bomb/Sprites/7-Objects/3-Bomb Bar/2-Full (Intermitent)/1.png" id="23_6w07c"]
+[ext_resource type="Texture2D" uid="uid://c6xvtmf1aq061" path="res://assets/Pirate Bomb/Sprites/7-Objects/3-Bomb Bar/2-Full (Intermitent)/3.png" id="24_brsxv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0eal"]
 radius = 17.0
@@ -649,10 +652,11 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimTree")
 current_state = NodePath("Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("air_state", "attack_state")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("air_state", "attack_state", "bomb_timer")]
 script = ExtResource("4_o4joy")
 air_state = NodePath("../Air")
 attack_state = NodePath("../Attack")
+bomb_timer = NodePath("../../BombTimer")
 
 [node name="Air" type="Node" parent="StateMachine" node_paths=PackedStringArray("landing_state")]
 script = ExtResource("5_r8o6l")
@@ -666,10 +670,12 @@ can_move = false
 script = ExtResource("7_vksqi")
 ground_state = NodePath("../Ground")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state")]
-script = ExtResource("8_io0rp")
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "power_bar", "bomb_timer")]
+script = ExtResource("8_ewu37")
 ground_state = NodePath("../Ground")
-can_move = false
+bomb_scene = ExtResource("9_iog60")
+power_bar = NodePath("../../PowerBar")
+bomb_timer = NodePath("../../BombTimer")
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("damageable", "ground_state", "dead_state")]
 script = ExtResource("9_o4x7i")
@@ -699,3 +705,15 @@ state_machine = NodePath("../StateMachine")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("20_amdcw")
+
+[node name="PowerBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = -29.0
+texture_under = ExtResource("23_6w07c")
+texture_progress = ExtResource("24_brsxv")
+
+[node name="BombTimer" type="Timer" parent="."]
+one_shot = true

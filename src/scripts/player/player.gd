@@ -12,6 +12,9 @@ class_name Player
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2 = Vector2.ZERO
 
+func get_direction()->Vector2:
+	return direction
+
 func _ready():
 	animation_tree.active = true
 
@@ -28,13 +31,15 @@ func _physics_process(delta) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
-	
 	move_and_slide()
 	update_animation_parameters()
 	update_facing_direction()
 
 func update_animation_parameters() -> void:
-	animation_tree.set("parameters/move/blend_position", direction.x)
+	if state_machine.check_if_can_move():
+		animation_tree.set("parameters/move/blend_position", direction.x)
+	else:
+		animation_tree.set("parameters/move/blend_position",0)
 
 func update_facing_direction() -> void:
 	if direction.x > 0:

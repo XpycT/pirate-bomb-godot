@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Bomb
+
 @onready var bomb_timer: Timer = $BombTimer
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var area: Area2D = $Area
