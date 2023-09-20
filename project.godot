@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Pirate Bomb | Godot Demo"
 config/tags=PackedStringArray("demo")
+run/main_scene="res://src/levels/demo.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.png"
 
