@@ -7,7 +7,7 @@ class_name GroundState
 @export var attack_state: State
 @export var jump_animation: String = "jump_start"
 
-func on_physics_process(delta: float) -> void:
+func on_physics_process(_delta: float) -> void:
 	if not character.is_on_floor():
 		next_state = air_state
 
