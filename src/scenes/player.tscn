@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cble1xne8ulll"]
+[gd_scene load_steps=60 format=3 uid="uid://cble1xne8ulll"]
 
 [ext_resource type="Texture2D" uid="uid://dk2vuv8siujsv" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/1-Idle (sprite sheet 58x58).png" id="1_g53fy"]
 [ext_resource type="Script" path="res://src/scripts/player/player.gd" id="1_p3qtb"]
@@ -16,9 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://cw2s48x6ucoy3" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/8-Dead Hit (sprite sheet 58x58).png" id="8_gsp85"]
 [ext_resource type="Script" path="res://src/scripts/player/states/sttack_state.gd" id="8_io0rp"]
 [ext_resource type="Texture2D" uid="uid://bh5yea1ekyx22" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/9-Dead Ground (sprite sheet 58x58).png" id="9_7rt2p"]
+[ext_resource type="Script" path="res://src/scripts/player/states/hit_state.gd" id="9_o4x7i"]
 [ext_resource type="Texture2D" uid="uid://bmsg3bf8f52f0" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/10-Door In (sprite sheet 58x58).png" id="10_nmate"]
 [ext_resource type="Texture2D" uid="uid://i7gu17ixtk2y" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/11-Door Out (sprite sheet 58x58).png" id="11_reyu0"]
 [ext_resource type="Script" path="res://src/scripts/StateDebugLabel.gd" id="18_scu6r"]
+[ext_resource type="Script" path="res://src/scripts/damageable.gd" id="20_amdcw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0eal"]
 radius = 17.0
@@ -669,6 +671,12 @@ script = ExtResource("8_io0rp")
 ground_state = NodePath("../Ground")
 can_move = false
 
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("damageable", "dead_state")]
+script = ExtResource("9_o4x7i")
+damageable = NodePath("../../Damageable")
+dead_state = NodePath("../Dead")
+can_move = false
+
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sspp1")
@@ -687,3 +695,6 @@ offset_bottom = -38.0
 text = "state: none"
 script = ExtResource("18_scu6r")
 state_machine = NodePath("../StateMachine")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("20_amdcw")

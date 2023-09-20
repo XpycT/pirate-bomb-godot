@@ -8,6 +8,8 @@ var character: CharacterBody2D
 var playback: AnimationNodeStateMachinePlayback
 var next_state: State
 
+signal interrupt_state(new_state: State)
+
 func on_enter() -> void:
 	pass
 	
