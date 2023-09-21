@@ -11,12 +11,14 @@ class_name Player
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2 = Vector2.ZERO
+var playback: AnimationNodeStateMachinePlayback
 
 func get_direction()->Vector2:
 	return direction
 
 func _ready():
-	animation_tree.active = true
+	animation_tree.active = true	
+	playback = animation_tree["parameters/playback"]
 
 func _physics_process(delta) -> void:
 	# Add the gravity.

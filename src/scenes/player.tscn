@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cble1xne8ulll"]
+[gd_scene load_steps=67 format=3 uid="uid://cble1xne8ulll"]
 
 [ext_resource type="Texture2D" uid="uid://dk2vuv8siujsv" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/1-Idle (sprite sheet 58x58).png" id="1_g53fy"]
 [ext_resource type="Script" path="res://src/scripts/player/player.gd" id="1_p3qtb"]
@@ -543,6 +543,12 @@ animation = &"dead_ground"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rmq8s"]
 animation = &"dead_hit"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vvlt8"]
+animation = &"door_in"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m7ukt"]
+animation = &"door_out"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7yvxx"]
 animation = &"fall"
 
@@ -612,11 +618,21 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1hyd1"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0d1td"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cnoc"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xwjrl"]
 states/dead_ground/node = SubResource("AnimationNodeAnimation_8r4mt")
 states/dead_ground/position = Vector2(353.004, 330.667)
 states/dead_hit/node = SubResource("AnimationNodeAnimation_rmq8s")
 states/dead_hit/position = Vector2(353.058, 233.63)
+states/door_in/node = SubResource("AnimationNodeAnimation_vvlt8")
+states/door_in/position = Vector2(551.136, 184.667)
+states/door_out/node = SubResource("AnimationNodeAnimation_m7ukt")
+states/door_out/position = Vector2(499.333, 265.333)
 states/fall/node = SubResource("AnimationNodeAnimation_7yvxx")
 states/fall/position = Vector2(552.37, -54.6667)
 states/ground/node = SubResource("AnimationNodeAnimation_emei2")
@@ -629,8 +645,8 @@ states/jump_start/node = SubResource("AnimationNodeAnimation_qb8bx")
 states/jump_start/position = Vector2(354.444, 20.6667)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_u1b8s")
 states/move/position = Vector2(354.667, 99.2222)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_lawf7"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_s3uu6"), "jump_start", "jump", SubResource("AnimationNodeStateMachineTransition_fpdtd"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_s1aid"), "fall", "ground", SubResource("AnimationNodeStateMachineTransition_emdxm"), "ground", "move", SubResource("AnimationNodeStateMachineTransition_25aib"), "move", "hit", SubResource("AnimationNodeStateMachineTransition_s18xr"), "hit", "move", SubResource("AnimationNodeStateMachineTransition_r5bmg"), "dead_hit", "dead_ground", SubResource("AnimationNodeStateMachineTransition_1tcko"), "hit", "dead_hit", SubResource("AnimationNodeStateMachineTransition_efjq1"), "move", "dead_hit", SubResource("AnimationNodeStateMachineTransition_2ddqa"), "move", "fall", SubResource("AnimationNodeStateMachineTransition_1hyd1")]
-graph_offset = Vector2(-423, -97)
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_lawf7"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_s3uu6"), "jump_start", "jump", SubResource("AnimationNodeStateMachineTransition_fpdtd"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_s1aid"), "fall", "ground", SubResource("AnimationNodeStateMachineTransition_emdxm"), "ground", "move", SubResource("AnimationNodeStateMachineTransition_25aib"), "move", "hit", SubResource("AnimationNodeStateMachineTransition_s18xr"), "hit", "move", SubResource("AnimationNodeStateMachineTransition_r5bmg"), "dead_hit", "dead_ground", SubResource("AnimationNodeStateMachineTransition_1tcko"), "hit", "dead_hit", SubResource("AnimationNodeStateMachineTransition_efjq1"), "move", "dead_hit", SubResource("AnimationNodeStateMachineTransition_2ddqa"), "move", "fall", SubResource("AnimationNodeStateMachineTransition_1hyd1"), "move", "door_in", SubResource("AnimationNodeStateMachineTransition_0d1td"), "door_out", "move", SubResource("AnimationNodeStateMachineTransition_8cnoc")]
+graph_offset = Vector2(-312, 64)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2

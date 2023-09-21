@@ -25,6 +25,9 @@ layer_2/tile_data = PackedInt32Array(327685, 262166, 3, 327686, 327702, 3, 32768
 [node name="door" parent="Doors" index="0"]
 position = Vector2(293, 465)
 
+[node name="start_position" parent="Doors/door" index="2"]
+position = Vector2(8, 33)
+
 [node name="windows" type="Node2D" parent="Props" index="0"]
 
 [node name="Window" parent="Props/windows" index="0" instance=ExtResource("2_x2ker")]

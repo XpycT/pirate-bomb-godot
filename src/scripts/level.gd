@@ -6,4 +6,9 @@ class_name Level
 @export var door: Door
 
 func _ready():
-	print("spawn player")
+	
+	var start_position = door.find_child("start_position")
+	if start_position != null:
+		var p = player_scene.instantiate()
+		p.position = start_position.global_position
+		add_child(p)
