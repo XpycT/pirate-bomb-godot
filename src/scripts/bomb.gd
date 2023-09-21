@@ -32,11 +32,10 @@ func change_state(new_state: BombState) -> void:
 
 func apply_damage() -> void:
 	for body in area.get_overlapping_bodies():
-		print(body.name)
 		# appy forces to props
 		if body.is_in_group("props"):
-			var explode_position = Vector2(position.x, position.y + 150)
-			var direction = body.position - position
+			var explode_position = Vector2(position.x, position.y + 15)
+			var direction = body.position - explode_position
 			var force = strength * direction / (body.position-position).length()
 			body.apply_central_impulse(force)
 #			print("body :", body.name,",position: ",position,",explode_position: ",explode_position, ", direction: ", direction, ", force: ",force)

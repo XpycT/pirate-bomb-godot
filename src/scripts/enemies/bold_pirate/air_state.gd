@@ -1,7 +1,5 @@
 extends State
 
-class_name AirState
-
 @export var landing_state: State
 @export var fall_animation: String = "fall"
 

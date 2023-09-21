@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1hcexljq0qbm"]
+[gd_scene load_steps=16 format=3 uid="uid://d1hcexljq0qbm"]
 
 [ext_resource type="PackedScene" uid="uid://1y5o7468yfb2" path="res://src/levels/level_base.tscn" id="1_sec5d"]
 [ext_resource type="PackedScene" uid="uid://p6rocpdjy6hx" path="res://src/scenes/props/window.tscn" id="2_x2ker"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cckgyxuswy6vs" path="res://src/scenes/props/chair.tscn" id="10_d774h"]
 [ext_resource type="PackedScene" uid="uid://btejl6wch2r6w" path="res://src/scenes/props/green_bottle.tscn" id="11_2242g"]
 [ext_resource type="PackedScene" uid="uid://itdtaqj6xbju" path="res://src/scenes/props/chair_right.tscn" id="14_wql2a"]
+[ext_resource type="PackedScene" uid="uid://cegwqrocs03x5" path="res://src/scenes/enemies/bold_pirate.tscn" id="15_ovwwn"]
 
 [node name="level_1" instance=ExtResource("1_sec5d")]
 
@@ -178,6 +179,5 @@ scale = Vector2(1, -1)
 [node name="Chair Right" parent="Props" index="9" instance=ExtResource("14_wql2a")]
 position = Vector2(621, 492)
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
-position = Vector2(400, 378)
-zoom = Vector2(1.2, 1.2)
+[node name="Bold Pirate" parent="." index="5" instance=ExtResource("15_ovwwn")]
+position = Vector2(462, 501)

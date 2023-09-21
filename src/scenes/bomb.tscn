@@ -107,7 +107,7 @@ radius = 15.0
 radius = 46.0109
 
 [node name="bomb" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 16
 lock_rotation = true
 script = ExtResource("1_bqf4m")
 

@@ -18,7 +18,6 @@ func hit(damage: int) -> void:
 	health -= damage
 	if health <= 0:
 		emit_signal("dead")
-		print("dead!!")
 	
 	emit_signal("on_hit", get_parent(), damage)
 
