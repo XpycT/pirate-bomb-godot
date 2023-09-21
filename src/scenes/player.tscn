@@ -734,3 +734,5 @@ texture_progress = ExtResource("24_brsxv")
 [node name="BombTimer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]

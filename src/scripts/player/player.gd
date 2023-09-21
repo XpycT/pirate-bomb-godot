@@ -7,6 +7,7 @@ class_name Player
 @onready var sprite: Sprite2D = $pivot/Sprite
 @onready var animation_tree: AnimationTree = $AnimTree
 @onready var state_machine: StateMachine = $StateMachine
+@onready var remote_transform: RemoteTransform2D = $RemoteTransform2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,6 +20,7 @@ func get_direction()->Vector2:
 func _ready():
 	animation_tree.active = true	
 	playback = animation_tree["parameters/playback"]
+	remote_transform.remote_path = get_viewport().get_camera_2d().get_path()
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
