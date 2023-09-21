@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://chx3pajfqj5y3"]
+
+[ext_resource type="Script" path="res://src/scripts/StateDebugLabel.gd" id="1_dju3x"]
+
+[node name="StateDebugLabel" type="Label" node_paths=PackedStringArray("state_machine")]
+offset_left = -53.0
+offset_top = -64.0
+offset_right = 54.0
+offset_bottom = -38.0
+text = "state: none"
+script = ExtResource("1_dju3x")
+state_machine = NodePath("")

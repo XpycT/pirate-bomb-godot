@@ -11,4 +11,4 @@ func _ready():
 	if start_position != null:
 		var p = player_scene.instantiate()
 		p.position = start_position.global_position
-		add_child(p)
+		get_tree().root.call_deferred("add_child",p)

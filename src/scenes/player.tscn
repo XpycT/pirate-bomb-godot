@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://src/scripts/player/states/hit_state.gd" id="9_o4x7i"]
 [ext_resource type="Texture2D" uid="uid://bmsg3bf8f52f0" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/10-Door In (sprite sheet 58x58).png" id="10_nmate"]
 [ext_resource type="Texture2D" uid="uid://i7gu17ixtk2y" path="res://assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/11-Door Out (sprite sheet 58x58).png" id="11_reyu0"]
-[ext_resource type="Script" path="res://src/scripts/StateDebugLabel.gd" id="18_scu6r"]
+[ext_resource type="PackedScene" uid="uid://chx3pajfqj5y3" path="res://src/scenes/state_debug_label.tscn" id="21_842ti"]
 [ext_resource type="PackedScene" uid="uid://d2oqwc7qpajsp" path="res://src/scenes/damageable.tscn" id="22_bssx5"]
 [ext_resource type="Texture2D" uid="uid://burt0qg1bqvc7" path="res://assets/Pirate Bomb/Sprites/7-Objects/3-Bomb Bar/2-Full (Intermitent)/1.png" id="23_6w07c"]
 [ext_resource type="Texture2D" uid="uid://c6xvtmf1aq061" path="res://assets/Pirate Bomb/Sprites/7-Objects/3-Bomb Bar/2-Full (Intermitent)/3.png" id="24_brsxv"]
@@ -710,13 +710,7 @@ tree_root = SubResource("AnimationNodeStateMachine_xwjrl")
 anim_player = NodePath("../Anim")
 parameters/move/blend_position = 0
 
-[node name="StateDebugLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
-offset_left = -53.0
-offset_top = -64.0
-offset_right = 54.0
-offset_bottom = -38.0
-text = "state: none"
-script = ExtResource("18_scu6r")
+[node name="StateDebugLabel" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("21_842ti")]
 state_machine = NodePath("../StateMachine")
 
 [node name="Damageable" parent="." instance=ExtResource("22_bssx5")]

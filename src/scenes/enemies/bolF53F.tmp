@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cegwqrocs03x5"]
+[gd_scene load_steps=60 format=3 uid="uid://cegwqrocs03x5"]
 
 [ext_resource type="Texture2D" uid="uid://bwpd510ja18pe" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/1-Idle (sprite sheet 63x67).png" id="1_q7blv"]
 [ext_resource type="Script" path="res://src/scripts/enemies/bold_pirate/bold_pirate.gd" id="1_sk41o"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://dghqpcdn4yiel" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/3-Jump Anticipation (sprite sheet 63x67).png" id="9_jp7gb"]
 [ext_resource type="Texture2D" uid="uid://crf10fk80qmso" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/2-Run (sprite sheet 63x67).png" id="10_pp373"]
 [ext_resource type="PackedScene" uid="uid://d2oqwc7qpajsp" path="res://src/scenes/damageable.tscn" id="11_n1uhc"]
-[ext_resource type="PackedScene" uid="uid://chx3pajfqj5y3" path="res://src/scenes/state_debug_label.tscn" id="20_2i76p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovytf"]
 size = Vector2(20, 31)
@@ -66,6 +65,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/HitArea:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1kf7e"]
 resource_name = "attack"
@@ -106,6 +117,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/HitArea:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [false, true, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_14g11"]
@@ -612,6 +635,7 @@ hframes = 34
 [node name="HitArea" type="Area2D" parent="pivot"]
 collision_layer = 0
 collision_mask = 18
+monitoring = false
 monitorable = false
 
 [node name="CollisionHit" type="CollisionShape2D" parent="pivot/HitArea"]
@@ -628,12 +652,10 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimTree")
 current_state = NodePath("Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("air_state", "attack_state", "detect_area", "attack_timer")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("air_state", "attack_state")]
 script = ExtResource("3_s3205")
 air_state = NodePath("../Air")
 attack_state = NodePath("../Attack")
-detect_area = NodePath("../../DetectArea")
-attack_timer = NodePath("../../AttackTimer")
 
 [node name="Air" type="Node" parent="StateMachine" node_paths=PackedStringArray("landing_state")]
 script = ExtResource("3_jey7g")
@@ -680,13 +702,3 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_0p5j3")
-
-[node name="AttackTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="StateDebugLabel" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("20_2i76p")]
-offset_left = -54.0
-offset_top = -85.0
-offset_right = 53.0
-offset_bottom = -59.0
-state_machine = NodePath("../StateMachine")

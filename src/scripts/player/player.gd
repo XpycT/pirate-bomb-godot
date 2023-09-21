@@ -8,11 +8,13 @@ class_name Player
 @onready var animation_tree: AnimationTree = $AnimTree
 @onready var state_machine: StateMachine = $StateMachine
 @onready var remote_transform: RemoteTransform2D = $RemoteTransform2D
+@onready var damageable: Damageable = $Damageable
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2 = Vector2.ZERO
 var playback: AnimationNodeStateMachinePlayback
+var dead = false
 
 func get_direction()->Vector2:
 	return direction
@@ -21,6 +23,8 @@ func _ready():
 	animation_tree.active = true	
 	playback = animation_tree["parameters/playback"]
 	remote_transform.remote_path = get_viewport().get_camera_2d().get_path()
+	
+	damageable.connect("dead", on_damageable_dead)
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
@@ -50,3 +54,6 @@ func update_facing_direction() -> void:
 		sprite.flip_h = false
 	elif direction.x < 0:
 		sprite.flip_h = true
+
+func on_damageable_dead():
+	dead = true
