@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctucrxr5nysj4" path="res://assets/Pirate Bomb/Sprites/7-Objects/12-Other Objects/Blue Bottle.png" id="2_au851"]
 
 [node name="Blue Bottle" instance=ExtResource("1_cgqjn")]
-mass = 0.15
+mass = 0.2
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -3)

@@ -85,78 +85,97 @@ position = Vector2(598, 437)
 [node name="Candle Light" parent="Props/lights/Candle3" index="1" instance=ExtResource("6_hjcma")]
 position = Vector2(-3, -26)
 
-[node name="barrels" type="Node2D" parent="Items" index="0"]
+[node name="barrels" type="Node2D" parent="Props" index="3"]
 
-[node name="Barrel" parent="Items/barrels" index="0" instance=ExtResource("7_ordlf")]
+[node name="Barrel" parent="Props/barrels" index="0" instance=ExtResource("7_ordlf")]
+z_index = 1
 position = Vector2(215, 234)
 
-[node name="Barrel2" parent="Items/barrels" index="1" instance=ExtResource("7_ordlf")]
+[node name="Barrel2" parent="Props/barrels" index="1" instance=ExtResource("7_ordlf")]
+z_index = 1
 position = Vector2(939, 362)
 
-[node name="Barrel3" parent="Items/barrels" index="2" instance=ExtResource("7_ordlf")]
+[node name="Barrel3" parent="Props/barrels" index="2" instance=ExtResource("7_ordlf")]
+z_index = 1
 position = Vector2(939, 318)
 scale = Vector2(-1, 1)
 
-[node name="Barrel4" parent="Items/barrels" index="3" instance=ExtResource("7_ordlf")]
+[node name="Barrel4" parent="Props/barrels" index="3" instance=ExtResource("7_ordlf")]
+z_index = 1
 position = Vector2(895, 363)
 rotation = 1.57079
 
-[node name="skulls" type="Node2D" parent="Items" index="1"]
+[node name="skulls" type="Node2D" parent="Props" index="4"]
 
-[node name="Skull" parent="Items/skulls" index="0" instance=ExtResource("8_8nwx1")]
+[node name="Skull" parent="Props/skulls" index="0" instance=ExtResource("8_8nwx1")]
+z_index = 1
 position = Vector2(331, 312)
 
-[node name="Skull2" parent="Items/skulls" index="1" instance=ExtResource("8_8nwx1")]
-position = Vector2(265, 506)
+[node name="Skull2" parent="Props/skulls" index="1" instance=ExtResource("8_8nwx1")]
+z_index = 1
+position = Vector2(265, 505)
 
-[node name="bottles" type="Node2D" parent="Items" index="2"]
+[node name="bottles" type="Node2D" parent="Props" index="5"]
 
-[node name="Red Bottle" parent="Items/bottles" index="0" instance=ExtResource("9_enexb")]
+[node name="Red Bottle" parent="Props/bottles" index="0" instance=ExtResource("9_enexb")]
+z_index = 1
 position = Vector2(841, 308)
 
-[node name="Red Bottle2" parent="Items/bottles" index="1" instance=ExtResource("9_enexb")]
+[node name="Red Bottle2" parent="Props/bottles" index="1" instance=ExtResource("9_enexb")]
+z_index = 1
 position = Vector2(345, 186)
 rotation = -1.57079
 
-[node name="Red Bottle3" parent="Items/bottles" index="2" instance=ExtResource("9_enexb")]
+[node name="Red Bottle3" parent="Props/bottles" index="2" instance=ExtResource("9_enexb")]
+z_index = 1
 position = Vector2(527, 378)
 rotation = -1.57079
 
-[node name="Blue Bottle" parent="Items/bottles" index="3" instance=ExtResource("10_a88d6")]
+[node name="Blue Bottle" parent="Props/bottles" index="3" instance=ExtResource("10_a88d6")]
+z_index = 1
 position = Vector2(478, 184)
 
-[node name="Blue Bottle2" parent="Items/bottles" index="4" instance=ExtResource("10_a88d6")]
+[node name="Blue Bottle2" parent="Props/bottles" index="4" instance=ExtResource("10_a88d6")]
+z_index = 1
 position = Vector2(792, 249)
 
-[node name="Blue Bottle3" parent="Items/bottles" index="5" instance=ExtResource("10_a88d6")]
+[node name="Blue Bottle3" parent="Props/bottles" index="5" instance=ExtResource("10_a88d6")]
+z_index = 1
 position = Vector2(580, 472)
 
-[node name="Green Bottle" parent="Items/bottles" index="6" instance=ExtResource("11_2242g")]
+[node name="Green Bottle" parent="Props/bottles" index="6" instance=ExtResource("11_2242g")]
+z_index = 1
 position = Vector2(560, 470)
 
-[node name="Green Bottle2" parent="Items/bottles" index="7" instance=ExtResource("11_2242g")]
+[node name="Green Bottle2" parent="Props/bottles" index="7" instance=ExtResource("11_2242g")]
+z_index = 1
 position = Vector2(353, 310)
 
-[node name="Green Bottle3" parent="Items/bottles" index="8" instance=ExtResource("11_2242g")]
+[node name="Green Bottle3" parent="Props/bottles" index="8" instance=ExtResource("11_2242g")]
+z_index = 1
 position = Vector2(841, 375)
 
-[node name="Green Bottle4" parent="Items/bottles" index="9" instance=ExtResource("11_2242g")]
+[node name="Green Bottle4" parent="Props/bottles" index="9" instance=ExtResource("11_2242g")]
+z_index = 1
 position = Vector2(767, 249)
 rotation = -1.57079
 
-[node name="Table" parent="Items" index="3" instance=ExtResource("9_ekod5")]
+[node name="Table" parent="Props" index="6" instance=ExtResource("9_ekod5")]
+z_index = 1
 position = Vector2(564, 496)
 
-[node name="Chair" parent="Items" index="4" instance=ExtResource("10_d774h")]
+[node name="Chair" parent="Props" index="7" instance=ExtResource("10_d774h")]
+z_index = 1
 position = Vector2(498, 496)
 rotation = -1.57079
 
-[node name="Chair3" parent="Items" index="5" instance=ExtResource("10_d774h")]
+[node name="Chair3" parent="Props" index="8" instance=ExtResource("10_d774h")]
+z_index = 1
 position = Vector2(709, 240)
-rotation = 1.57079
-scale = Vector2(-1, 1)
+rotation = -1.5708
+scale = Vector2(1, -1)
 
-[node name="Chair Right" parent="Items" index="6" instance=ExtResource("14_wql2a")]
+[node name="Chair Right" parent="Props" index="9" instance=ExtResource("14_wql2a")]
 position = Vector2(621, 492)
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
