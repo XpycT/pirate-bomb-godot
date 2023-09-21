@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://dec3srd4k240j"]
+
+[ext_resource type="Texture2D" uid="uid://dn0c7lej02w80" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/1.png" id="1_01l8u"]
+[ext_resource type="Texture2D" uid="uid://c11qr6j8isxal" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/2.png" id="2_a2pvv"]
+[ext_resource type="Texture2D" uid="uid://dsgnvv46ghqwc" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/3.png" id="3_yf2bc"]
+[ext_resource type="Texture2D" uid="uid://cbdnqqqiq40qr" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/4.png" id="4_n4t1i"]
+[ext_resource type="Texture2D" uid="uid://70ykeqawgpov" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/5.png" id="5_nxa17"]
+[ext_resource type="Texture2D" uid="uid://0ota2gwao4r1" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/6.png" id="6_x2nuy"]
+[ext_resource type="Texture2D" uid="uid://entfcaiqr86p" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/7.png" id="7_6oi54"]
+[ext_resource type="Texture2D" uid="uid://bwaw6r5f6pqpx" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/8.png" id="8_gvp1s"]
+[ext_resource type="Texture2D" uid="uid://ecfnfvgp1c2" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/9.png" id="9_np8ki"]
+[ext_resource type="Texture2D" uid="uid://cmeew5in6fgkx" path="res://assets/Pirate Bomb/Sprites/7-Objects/9-Small Chain/10.png" id="10_etg21"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idcm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_01l8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a2pvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yf2bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n4t1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nxa17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x2nuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6oi54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gvp1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_np8ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_etg21")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Chain Small" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_idcm0")
+autoplay = "default"

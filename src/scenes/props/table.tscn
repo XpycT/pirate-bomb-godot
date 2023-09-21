@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://urdujieel4mg"]
+
+[ext_resource type="PackedScene" uid="uid://bkr8tt7el3adj" path="res://src/scenes/props/prop_base.tscn" id="1_i4muj"]
+[ext_resource type="Texture2D" uid="uid://cx52ksahocf1o" path="res://assets/Pirate Bomb/Sprites/7-Objects/12-Other Objects/Table.png" id="2_kijvy"]
+
+[node name="Table" instance=ExtResource("1_i4muj")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_kijvy")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-40, -16, 40, -16, 40, -7, 27, -7, 27, 16, 21, 16, 21, -7, -19, -7, -19, 16, -26, 16, -26, -7, -40, -7)

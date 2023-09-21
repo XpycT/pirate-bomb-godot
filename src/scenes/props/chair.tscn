@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cckgyxuswy6vs"]
+
+[ext_resource type="PackedScene" uid="uid://bkr8tt7el3adj" path="res://src/scenes/props/prop_base.tscn" id="1_bchfd"]
+[ext_resource type="Texture2D" uid="uid://51bhh6nkyqlp" path="res://assets/Pirate Bomb/Sprites/7-Objects/12-Other Objects/Chair.png" id="2_18k1a"]
+
+[node name="Chair" instance=ExtResource("1_bchfd")]
+mass = 0.4
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -8)
+texture = ExtResource("2_18k1a")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-9, -6, 16, -6, 16, 20, 9, 20, 9, 16, -9, 16, -9, 20, -16, 20, -16, -36, -9, -36)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcset5m2qo761"]
+
+[ext_resource type="PackedScene" uid="uid://bkr8tt7el3adj" path="res://src/scenes/props/prop_base.tscn" id="1_n14tj"]
+[ext_resource type="Texture2D" uid="uid://dwv1vn7dalvan" path="res://assets/Pirate Bomb/Sprites/7-Objects/12-Other Objects/Red Bottle.png" id="2_vjd2t"]
+
+[node name="Red Bottle" instance=ExtResource("1_n14tj")]
+mass = 0.14
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -4)
+texture = ExtResource("2_vjd2t")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-3, -20, 3, -20, 4, -18, 4, -16, 3, -16, 3, -9, 6, -9, 7, -7, 7, 10, 6, 11, -6, 11, -7, 10, -7, -7, -6, -9, -3, -9, -3, -16, -4, -16, -4, -19)

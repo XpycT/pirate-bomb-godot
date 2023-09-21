@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckjljflwcgwbm"]
+
+[ext_resource type="Texture2D" uid="uid://blon7jrfjufun" path="res://assets/Pirate Bomb/Sprites/7-Objects/13-Run Particles/1.png" id="1_ifpt1"]
+[ext_resource type="Texture2D" uid="uid://dlko0ydd8jv8x" path="res://assets/Pirate Bomb/Sprites/7-Objects/13-Run Particles/2.png" id="2_ioqd3"]
+[ext_resource type="Texture2D" uid="uid://cf3k3vu0xc6l5" path="res://assets/Pirate Bomb/Sprites/7-Objects/13-Run Particles/3.png" id="3_fc1d5"]
+[ext_resource type="Texture2D" uid="uid://ddoa4m2kpkqit" path="res://assets/Pirate Bomb/Sprites/7-Objects/13-Run Particles/4.png" id="4_gma6q"]
+[ext_resource type="Texture2D" uid="uid://crax3gyd7g5b1" path="res://assets/Pirate Bomb/Sprites/7-Objects/13-Run Particles/5.png" id="5_acpwv"]
+[ext_resource type="Texture2D" uid="uid://bhjt388pfai16" path="res://assets/Pirate Bomb/Sprites/7-Objects/13-Run Particles/6.png" id="6_rxfgt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufjvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ifpt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ioqd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fc1d5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gma6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_acpwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rxfgt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Run Particles" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ufjvy")

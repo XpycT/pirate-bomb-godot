@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bkr8tt7el3adj"]
+
+[node name="Prop" type="RigidBody2D" groups=["props"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

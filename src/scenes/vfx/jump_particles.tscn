@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyth4d28kvsxs"]
+
+[ext_resource type="Texture2D" uid="uid://di3ilbhj78yd8" path="res://assets/Pirate Bomb/Sprites/7-Objects/14-Jump Particles/1.png" id="1_8c8wt"]
+[ext_resource type="Texture2D" uid="uid://c20umys58x7ad" path="res://assets/Pirate Bomb/Sprites/7-Objects/14-Jump Particles/2.png" id="2_hfbrq"]
+[ext_resource type="Texture2D" uid="uid://cxenvqpqi125t" path="res://assets/Pirate Bomb/Sprites/7-Objects/14-Jump Particles/3.png" id="3_47e3b"]
+[ext_resource type="Texture2D" uid="uid://vrlmgcxpyw3f" path="res://assets/Pirate Bomb/Sprites/7-Objects/14-Jump Particles/4.png" id="4_dejf3"]
+[ext_resource type="Texture2D" uid="uid://gy8emq1c70rv" path="res://assets/Pirate Bomb/Sprites/7-Objects/14-Jump Particles/5.png" id="5_uca87"]
+[ext_resource type="Texture2D" uid="uid://bhmrf1rshxnnc" path="res://assets/Pirate Bomb/Sprites/7-Objects/14-Jump Particles/6.png" id="6_l2ccj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhk2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8c8wt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hfbrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_47e3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dejf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uca87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l2ccj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Jump Particles" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_rhk2m")
+frame = 5
+frame_progress = 1.0

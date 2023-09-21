@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwkbo6eo7hrba"]
+
+[ext_resource type="PackedScene" uid="uid://bkr8tt7el3adj" path="res://src/scenes/props/prop_base.tscn" id="1_cgqjn"]
+[ext_resource type="Texture2D" uid="uid://ctucrxr5nysj4" path="res://assets/Pirate Bomb/Sprites/7-Objects/12-Other Objects/Blue Bottle.png" id="2_au851"]
+
+[node name="Blue Bottle" instance=ExtResource("1_cgqjn")]
+mass = 0.15
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -3)
+texture = ExtResource("2_au851")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-4, -11, 4, -11, 5, -10, 5, -7, 4, -7, 4, -3, 7, -3, 8, -2, 8, 9, 7, 10, -7, 10, -8, 9, -8, -2, -7, -3, -4, -3, -4, -8, -5, -8, -5, -10)

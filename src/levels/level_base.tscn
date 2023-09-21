@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://1y5o7468yfb2"]
+
+[ext_resource type="PackedScene" uid="uid://cmqi57lu83pno" path="res://src/scenes/map_base.tscn" id="1_1l7yx"]
+[ext_resource type="Script" path="res://src/scripts/level.gd" id="1_85wbw"]
+[ext_resource type="PackedScene" uid="uid://c5hbkjp1lqavx" path="res://src/scenes/door.tscn" id="1_lqvc7"]
+[ext_resource type="PackedScene" uid="uid://cble1xne8ulll" path="res://src/scenes/player.tscn" id="2_uhcxv"]
+
+[node name="level_base" type="Node2D" node_paths=PackedStringArray("door")]
+script = ExtResource("1_85wbw")
+player_scene = ExtResource("2_uhcxv")
+door = NodePath("Doors/door")
+
+[node name="TileMaps" type="Node2D" parent="."]
+
+[node name="map" parent="TileMaps" instance=ExtResource("1_1l7yx")]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="door" parent="Doors" instance=ExtResource("1_lqvc7")]
+position = Vector2(1044, 174)
+
+[node name="start_position" type="Marker2D" parent="Doors/door"]
+
+[node name="Props" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Items" type="Node2D" parent="."]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj2e566ch2bgo"]
+
+[ext_resource type="PackedScene" uid="uid://bkr8tt7el3adj" path="res://src/scenes/props/prop_base.tscn" id="1_78t7t"]
+[ext_resource type="Texture2D" uid="uid://d4mal8bct0asa" path="res://assets/Pirate Bomb/Sprites/7-Objects/12-Other Objects/Skull.png" id="2_pm4pa"]
+
+[node name="Skull" instance=ExtResource("1_78t7t")]
+mass = 0.2
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pm4pa")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-8, -7, 7, -7, 9, -5, 9, 4, 7, 6, 5, 7, -3, 7, -4, 6, -7, 6, -9, 4, -9, -5)

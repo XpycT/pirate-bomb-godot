@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://dngyj76fcjads"]
+
+[ext_resource type="Texture2D" uid="uid://d3fdd82521um3" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/1.png" id="1_6i45e"]
+[ext_resource type="Texture2D" uid="uid://cj28wf8e6y4sl" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/2.png" id="2_x14ra"]
+[ext_resource type="Texture2D" uid="uid://8jvhcse0q1lp" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/3.png" id="3_p703t"]
+[ext_resource type="Texture2D" uid="uid://c67u7fgwuxpjj" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/4.png" id="4_ayxqu"]
+[ext_resource type="Texture2D" uid="uid://bol4f5rdoukj0" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/5.png" id="5_ydmc8"]
+[ext_resource type="Texture2D" uid="uid://du68u71vwtnst" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/6.png" id="6_ihvg6"]
+[ext_resource type="Texture2D" uid="uid://c3vl6tmkkkq8p" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/7.png" id="7_gblcf"]
+[ext_resource type="Texture2D" uid="uid://chupmncsrmybr" path="res://assets/Pirate Bomb/Sprites/7-Objects/6-Candle/8.png" id="8_455hc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yr7h3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6i45e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x14ra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p703t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ayxqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ydmc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ihvg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gblcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_455hc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Candle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yr7h3")
+autoplay = "default"
