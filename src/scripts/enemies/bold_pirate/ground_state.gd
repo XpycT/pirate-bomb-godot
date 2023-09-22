@@ -1,27 +1,33 @@
 extends State
 
-@export var jump_velocity: float = -400.0
-@export var air_state: State
-@export var attack_state: State
-@export var jump_animation: String = "jump_start"
 @export var detect_area: Area2D
-@export var attack_timer: Timer
+@export var air_state: State
+@export var chase_state: State
 
-var player
+func _ready() -> void:
+	detect_area.connect("body_entered", on_detect_area_body_entered)
 
-func on_physics_process(_delta: float) -> void:
-	if player == null:
-		player = get_node_or_null("/root/player")
+func on_enter() -> void:
+	if character.target:
+		if (character.target is Player and not character.target.dead) or character.target is Bomb:
+			next_state = chase_state
 	
+func on_physics_process(_delta: float) -> void:
 	if not character.is_on_floor():
 		next_state = air_state
-	
-	if player and not player.dead and attack_timer.is_stopped() and is_in_range(player, character.attack_range):
-		attack_timer.start()
-		next_state = attack_state
+	if character.target:
+		chase_target()
 
-func is_in_range(target, target_range):
+func chase_target() -> void:
 	for body in detect_area.get_overlapping_bodies():
-		if body is Player:
-			return character.global_position.distance_to(target.global_position) < target_range
-	return false
+		if (body is Player and not body.dead) or body is Bomb:
+			# priority bomb
+			if (body is Player and not body.dead) and character.target is Bomb:
+				pass
+			else:
+				character.set_target(body)
+	if character.target and ((character.target is Player and not character.target.dead) or character.target is Bomb):
+		next_state = chase_state
+
+func on_detect_area_body_entered(body: Node2D) -> void:
+	chase_target()

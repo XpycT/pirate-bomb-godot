@@ -44,7 +44,11 @@ func apply_damage() -> void:
 			if child is Damageable:
 				child.hit(1)
 
-
+func pull_away(target_position: Vector2) -> void:
+	var direction = global_position - target_position	
+	var pull_force = Vector2(300 * sign(direction.x), -500)
+	print ("pull_away from: ",target_position, " direction: ",direction, " pull force: ", pull_force)
+	apply_impulse(pull_force)
 
 func _on_sprite_animation_finished():
 	if current_state == BombState.EXPLODE:

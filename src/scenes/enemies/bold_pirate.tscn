@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cegwqrocs03x5"]
+[gd_scene load_steps=62 format=3 uid="uid://cegwqrocs03x5"]
 
 [ext_resource type="Texture2D" uid="uid://bwpd510ja18pe" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/1-Idle (sprite sheet 63x67).png" id="1_q7blv"]
 [ext_resource type="Script" path="res://src/scripts/enemies/bold_pirate/bold_pirate.gd" id="1_sk41o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cyt47718sbry7" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/10-Dead Ground (sprite sheet 63x67).png" id="3_l2jta"]
 [ext_resource type="Script" path="res://src/scripts/enemies/bold_pirate/ground_state.gd" id="3_s3205"]
 [ext_resource type="Texture2D" uid="uid://1jumoh1fjtm2" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/9-Dead Hit (sprite sheet 63x67).png" id="4_tsewf"]
+[ext_resource type="Script" path="res://src/scripts/enemies/bold_pirate/chase_state.gd" id="5_b07xw"]
 [ext_resource type="Script" path="res://src/scripts/enemies/bold_pirate/landing_state.gd" id="5_jtv54"]
 [ext_resource type="Texture2D" uid="uid://ju8lmni6h123" path="res://assets/Pirate Bomb/Sprites/2-Enemy-Bald Pirate/5-Fall (sprite sheet 63x67).png" id="5_owdkx"]
 [ext_resource type="Script" path="res://src/scripts/enemies/bold_pirate/attack_state.gd" id="6_rvwbt"]
@@ -534,6 +535,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_wc2bo")
 blend_point_1/pos = -1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_6hy3k")
 blend_point_2/pos = 1.0
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbsmx"]
 switch_mode = 2
@@ -595,8 +597,8 @@ states/move/position = Vector2(389, 100.778)
 transitions = ["ground", "move", SubResource("AnimationNodeStateMachineTransition_dbsmx"), "attack", "move", SubResource("AnimationNodeStateMachineTransition_lsxdr"), "hit", "move", SubResource("AnimationNodeStateMachineTransition_h4h1n"), "jump_start", "jump", SubResource("AnimationNodeStateMachineTransition_ckxde"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_5njb7"), "fall", "ground", SubResource("AnimationNodeStateMachineTransition_y2731"), "move", "fall", SubResource("AnimationNodeStateMachineTransition_6u32f"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_qavd4"), "move", "dead_hit", SubResource("AnimationNodeStateMachineTransition_ykqks"), "hit", "dead_hit", SubResource("AnimationNodeStateMachineTransition_d7eb5"), "dead_hit", "dead_ground", SubResource("AnimationNodeStateMachineTransition_nrvxc"), "Start", "move", SubResource("AnimationNodeStateMachineTransition_nixoy")]
 graph_offset = Vector2(-293, -81)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0p5j3"]
-radius = 131.187
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1arep"]
+size = Vector2(170, 58)
 
 [node name="Bold Pirate" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -628,11 +630,18 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimTree")
 current_state = NodePath("Ground")
 
-[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("air_state", "attack_state", "detect_area", "attack_timer")]
+[node name="Ground" type="Node" parent="StateMachine" node_paths=PackedStringArray("detect_area", "air_state", "chase_state")]
 script = ExtResource("3_s3205")
-air_state = NodePath("../Air")
-attack_state = NodePath("../Attack")
 detect_area = NodePath("../../DetectArea")
+air_state = NodePath("../Air")
+chase_state = NodePath("../Chase")
+can_move = false
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("detect_area", "ground_state", "attack_state", "attack_timer")]
+script = ExtResource("5_b07xw")
+detect_area = NodePath("../../DetectArea")
+ground_state = NodePath("../Ground")
+attack_state = NodePath("../Attack")
 attack_timer = NodePath("../../AttackTimer")
 
 [node name="Air" type="Node" parent="StateMachine" node_paths=PackedStringArray("landing_state")]
@@ -643,10 +652,12 @@ landing_state = NodePath("../Landing")
 script = ExtResource("5_jtv54")
 ground_state = NodePath("../Ground")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("ground_state", "hit_area")]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("chase_state", "hit_area", "attack_timer")]
 script = ExtResource("6_rvwbt")
-ground_state = NodePath("../Ground")
+chase_state = NodePath("../Chase")
 hit_area = NodePath("../../pivot/HitArea")
+attack_timer = NodePath("../../AttackTimer")
+can_move = false
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("damageable", "ground_state", "dead_state")]
 script = ExtResource("7_e85qk")
@@ -679,7 +690,8 @@ collision_mask = 18
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
-shape = SubResource("CircleShape2D_0p5j3")
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_1arep")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
