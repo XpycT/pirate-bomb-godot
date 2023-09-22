@@ -3,7 +3,9 @@
 2D platformer example
 
 
-https://github.com/XpycT/pirate-bomb-godot/assets/120016/1675c7b5-d273-4f8d-999b-5b02f1783fa7
+
+https://github.com/XpycT/pirate-bomb-godot/assets/120016/907081dc-b727-4da2-9d83-e92812b309a4
+
 
 
 ## Assets Source
